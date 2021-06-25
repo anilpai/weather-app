@@ -1,45 +1,60 @@
-import React, {useState, useEffect} from "react";
-
+import React, { useState, useEffect } from "react";
+import { stampFormatter, iconHandler, formats } from "./utils";
 
 const WeatherForecast = () => {
+  const [tenDayWeather, setTenDayWeather] = useState();
 
-    const [tenDayWeather, setTenDayWeather] = useState()
+  useEffect(() => {
+    const api_key = "8b4a1cfe7b37f251dcce8b232975fd6d";
+    const cityname = "Austin";
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&cnt=10&units=metric&&appid=${api_key}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setTenDayWeather(data));
+  }, []);
 
-    useEffect(()=> {
-        const api_key = "8b4a1cfe7b37f251dcce8b232975fd6d";
-        const cityname = "Austin"
-        const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&units=metric&&appid=${api_key}`
-        fetch(url)
-        .then(response =>  response.json())
-        .then(data => setTenDayWeather(data));
-    },[])
+  const weatherStyle = {
+    display: "flex",
+    margin: "5px",
+    padding: "5px",
+    flexWrap: "wrap",
+  };
 
-
-    const weatherStyle ={
-      display : "flex",
-      margin : "50px",
-      padding : "20px",
-      flexWrap: "wrap"
-    }
-    
-    return (
-      <div style={weatherStyle}>
-        <div>{` Weather Forecast for next 10 days :`}</div>
-         {tenDayWeather?.list?.map((d) => {
-           return (
-            <div style={{"padding": "30px"}}>
-                <div>date: {d?.dt}</div>
-                <div>weather: {d?.weather[0]?.description}</div>
-                <div>temp : {d?.main?.temp}</div>
-                <div>pressure: {d?.main?.pressure}</div>
-                <div>humidity: {d?.main?.humidity}</div>
-                <div>wind speed: {d?.wind?.speed}</div>
+  return (
+    <div style={weatherStyle}>
+      {tenDayWeather?.list?.map((d) => {
+        return (
+          <div className="card">
+            <div className="left-panel panel">
+              <div className="date">Thursday, 24 Jun 2021</div>
+              <div className="city">Austin</div>
+              <div className="temp">
+                <img
+                  src="" 
+                  width="60"
+                />
+                27&deg;
+              </div>
             </div>
-           )
-         })}
-      </div>
-    );
-  }
+            <div className="right-panel panel">
+              <div className="parameters">
+                <h3>Cloudy</h3>
+                <div>
+                  <span> Speed 0.45 meter/sec </span>
+                </div>
+                <div>
+                  <span> Pressure 1014 hPa </span>
+                </div>
+                <div>
+                  <span> Humidity 75% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
-  export default WeatherForecast;
-  
+export default WeatherForecast;

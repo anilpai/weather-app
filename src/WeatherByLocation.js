@@ -1,47 +1,54 @@
 import React from "react";
 import "./Weather.css";
-import {stampFormatter, iconHandler}  from "./utils";
+import {stampFormatter, formats, iconHandler }  from "./utils";
 
-const WeatherByLocation = ({w}) => {
+const WeatherByLocation = ({ getWeather, saveWeather, onInputChange, data, city }) => {
+  const { name, dt, weather, main, wind } = data || {};
 
-    console.log(w)
+  console.log(data);
 
-    // const [weather, setWeather] = useState(w)
-
-    // useEffect(()=> {
-    //     const api_key = "8b4a1cfe7b37f251dcce8b232975fd6d";
-    //     const cityname = "Boston"
-    //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${api_key}`
-    //     fetch(url)
-    //     .then(response =>  response.json())
-    //     .then(data => setWeather(data));
-
-    // },[])
-
-    return (
+  return (
     <>
-      <div className="WeatherApp">
-          <div>City : {w?.name}</div>
-          <div>Time : {stampFormatter(w?.dt)}</div>
-          <img alt="weather icon" src={iconHandler(w?.weather[0]?.icon)} />
-          <div>Description : {w?.weather[0]?.description}</div>
-          <div>Temperature : {w?.main?.temp}</div>
-          <div>Pressure : {w?.main?.pressure}</div>
-          <div>Humidity : {w?.main?.humidity}</div>
-          <div>Speed : {w?.wind?.speed}</div>
-      </div>
-      <div class="card">
-        <h2 style={{alignItems:"center"}}>Brussels</h2>
-        <h4 style={{alignItems:"center"}}><span>22:04 PM</span></h4>
-        <h3>Cloudy<span>Wind 10km/h <span class="dot">•</span> Humidity 0%</span></h3>
-        <div>
-          <img alt="weather icon" src={iconHandler(w?.weather[0]?.icon)} />
-          <h1>23°</h1>
+      <div className="top-banner">
+        <div className="container">
+          <div className="search-box">
+            <input type="text" name="city" id="city" value={city} placeholder="Search for a city" onChange={onInputChange} />
+            <button onClick={getWeather}>Get Weather</button>
+            <button onClick={saveWeather}>Save Weather</button>
+            <span className="msg"></span>
+          </div>
         </div>
-          <h4>Cloudy<span>Wind 10km/h <span class="dot">•</span> 0%</span></h4>
+      </div>
+      <div className="card">
+        <div className="left-panel panel">
+          <div className="date">Monday, 20 Aug 2018</div>
+          <div className="city">{name}</div>
+          <div className="temp">
+            <img
+              src={iconHandler(weather?.[0]?.icon)}
+              height="60"
+              width="60"
+            />
+            27&deg;
+          </div>
+        </div>
+        <div className="right-panel panel">
+          <div className="parameters">
+            <h3>Cloudy</h3>
+            <div>
+              <span>{`Speed 0.45 meter/sec`}</span>
+            </div>
+            <div>
+              <span>{`Pressure 1014 hPa`}</span>
+            </div>
+            <div>
+              <span>{`Humidity ${main?.humidity}${main?.humidity} `}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </>
-    );
-  }
-  
-  export default WeatherByLocation;
+  );
+};
+
+export default WeatherByLocation;
