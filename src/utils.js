@@ -13,36 +13,36 @@ const stampFormatter = (stamp) => {
 
 const iconHandler = (icon) => {
   // Day Icons & Night Icons
-  return `http://openweathermap.org/img/wn/${icon}@4x.png`
+  return `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${icon}.svg`;
 };
 
 const formats = {
-    "temp": {
-        "standard" : "Kelvin",
-        "metric" : "Celsius",
-        "imperial": "Fahrenheit"
-    },
-    "humidity": {
-        "standard" : "%",
-        "metric" : "%",
-        "imperial": "%"
-    },
-    "pressure": {
-        "standard" : "hPa",
-        "metric" : "hPa",
-        "imperial": "hPa"
-    },
-    "speed": {
-        "standard" : "meter/sec",
-        "metric" : "meter/sec",
-        "imperial": "miles/hour"
-    }
-}
+  temp: {
+    standard: "Kelvin",
+    metric: "Celsius",
+    imperial: "Fahrenheit",
+  },
+  humidity: {
+    standard: "%",
+    metric: "%",
+    imperial: "%",
+  },
+  pressure: {
+    standard: "hPa",
+    metric: "hPa",
+    imperial: "hPa",
+  },
+  speed: {
+    standard: "meter/sec",
+    metric: "meter/sec",
+    imperial: "miles/hour",
+  },
+};
 
 const units = {
-    's' : 'standard',
-    'm' : 'metric',
-    'i' : 'imperial'
+  s: "standard",
+  m: "metric",
+  i: "imperial",
 };
 
 export { stampFormatter, iconHandler, formats, units };
