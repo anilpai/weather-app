@@ -22,3 +22,4 @@ Runs units tests
 [ ] Add Unit Tests
 [ ] Implement Metric/Imperial
 [ ] Use Formats from Utils
+[ ] Error Handling
