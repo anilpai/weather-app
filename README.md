@@ -1,5 +1,8 @@
 # Weather App
 
+[![Edit weather-app](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/weather-app-fqv7q?fontsize=14&hidenavigation=1&theme=dark)
+
+
 Weather app built using https://openweathermap.org/
 
 ### `yarn start`
