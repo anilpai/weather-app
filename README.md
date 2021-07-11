@@ -16,10 +16,10 @@ Runs units tests
 [X] accept a city name or zip (postal) code information to show weather.
 [X] display the current weather condition.
 [X] display the daily weather condition for 10 days.
+[X] Implement Metric/Imperial
+[X] Error Handling
 
 ## Todo
 
 [ ] Add Unit Tests
-[ ] Implement Metric/Imperial
 [ ] Use Formats from Utils
-[ ] Error Handling

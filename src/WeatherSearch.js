@@ -1,12 +1,15 @@
 import React from "react";
 import "./Weather.css";
+import ToggleSwitch from "./ToggleSwitch";
 
 const WeatherSearch = ({
   getWeather,
   saveWeather,
   onInputChange,
+  handleToggle,
+  isOn,
   data,
-  city,
+  city
 }) => {
   return (
     <>
@@ -23,7 +26,7 @@ const WeatherSearch = ({
             />
             <button onClick={getWeather}>Get Weather</button>
             <button onClick={saveWeather}>Save Weather</button>
-            <span className="msg"></span>
+            <ToggleSwitch isOn={isOn} onToggle={handleToggle} />
           </div>
         </div>
       </div>

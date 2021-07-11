@@ -3,7 +3,11 @@ import "./Weather.css";
 import { stampFormatter, iconHandler } from "./utils";
 
 const WeatherByLocation = ({ data }) => {
-  const { name, dt, weather, main, wind } = data || {};
+  const { name, dt, weather, main, wind } = data;
+
+  if (data?.cod === "404") {
+    return <span className="msg">{data?.message}</span>;
+  }
 
   return (
     <>
@@ -38,6 +42,24 @@ const WeatherByLocation = ({ data }) => {
       </div>
     </>
   );
+};
+
+WeatherByLocation.defaultProps = {
+  name: "Unknown City",
+  dt: "Today",
+  weather: {
+    0: {
+      description: "No data"
+    }
+  },
+  main: {
+    temp: 0,
+    pressure: 0,
+    humidity: 0
+  },
+  wind: {
+    speed: 0
+  }
 };
 
 export default WeatherByLocation;
