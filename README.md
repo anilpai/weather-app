@@ -26,3 +26,33 @@ Runs units tests
 
 [ ] Add Unit Tests
 [ ] Use Formats from Utils
+
+
+
+
+
+# Weather App
+
+## Product Requirements
+You are building a responsive web application that helps users track the essential weather data for a given location. The application will contain the following:
+
+* A widget to accept a city name or zip (postal) code information.
+* A widget to display the current weather condition that includes:
+  * day (e.g. "Monday, March 1st, 2021")
+  * weather description (e.g. "Misty")
+  * temperature
+  * pressure
+  * humidity and
+  * wind information
+
+* A widget to display the daily weather condition for 10 days that includes:
+  * day (e.g. "Monday, March 2nd, 2021")
+  * weather description (e.g. "Partly Cloudy")
+  * min and max temperature
+
+* A control to switch between imperial (e.g. miles/hour for wind) or metric (e.g. Celsius for temperature) units.
+* The application will remember the input provided by the user such as city name/zip, and imperial/metric units until the user changes it.
+
+## Additional instructions
+* Add psuedo code or an actual example of a unit test.
+* Feel free to extend the product requirements as you see fit.
